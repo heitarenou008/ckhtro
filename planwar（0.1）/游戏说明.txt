@@ -1,0 +1,32 @@
+### 一、本地运行（适合局域网内分享）
+
+1. **使用Python内置HTTP服务器**
+   - 确保电脑安装了Python
+   - 在游戏文件夹（planwar）中打开命令行
+   - 运行命令：`python -m http.server 8000`
+   - 游戏将在 `http://localhost:8000` 运行
+   - 同一局域网内的用户可以通过你的电脑IP访问，例如 `http://192.168.1.100:8000`
+
+2. **使用Node.js的http-server**
+   - 安装Node.js
+   - 全局安装http-server：`npm install -g http-server`
+   - 在游戏文件夹中运行：`http-server -p 8000`
+   - 访问方式同上
+
+
+### 二、游戏打包
+
+1. **基本文件结构**
+   - `index.html` - 游戏主页面
+   - `style.css` - 游戏样式
+   - `game.js` - 游戏逻辑
+   - 确保所有文件在同一文件夹中
+
+2. **压缩优化（可选）**
+   - 使用在线工具或本地工具压缩CSS和JS文件，减小文件大小
+   - 例如：CSS压缩可以用CSSMinifier，JS压缩可以用UglifyJS
+
+3. **创建ZIP文件**
+   - 选中所有游戏文件，右键选择"发送到"→"压缩(zipped)文件夹"
+   - 生成的ZIP文件可以方便地分享给他人
+

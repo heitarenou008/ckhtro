@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞机大战</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="score">分数: <span id="score">0</span></div>
+            <div class="level">等级: <span id="level">1</span></div>
+            <div class="experience">经验: <span id="experience">0</span>/<span id="experienceToNextLevel">10</span></div>
+            <div class="time">时间: <span id="gameTime">00:00</span></div>
+            <div class="nukes">核弹: <span id="nukes">3</span></div>
+            <button class="nuke-button" onclick="launchNuke()" id="nukeButton">发射核弹</button>
+            <div class="boss-warning" id="bossWarning"></div>
+        </div>
+        <div class="level-info">
+            <div class="current-level">当前关卡: <span id="currentLevel">1</span></div>
+            <div class="remaining-enemies">剩余敌人: <span id="remainingEnemies">0</span></div>
+            <div class="remaining-elites">剩余精英: <span id="remainingElites">0</span></div>
+            <div class="level-progress">关卡进度: <span id="levelProgress">0</span>%</div>
+        </div>
+        <div class="player-stats">
+            <div class="shield-bar">
+                <div class="shield-label">护盾: <span id="shield">0</span>/<span id="maxShield">0</span></div>
+            </div>
+            <div class="health-bar">
+                <div class="health-label">生命: <span id="lives">3</span>/<span id="maxLives">3</span></div>
+            </div>
+        </div>
+        <canvas id="gameCanvas" width="1000" height="700"></canvas>
+        <div class="game-over" id="gameOver">
+            <h2>游戏结束</h2>
+            <p>最终分数: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">重新开始</button>
+            <button onclick="showStartScreen()">回到主界面</button>
+            <button onclick="showHistory()">查看历史记录</button>
+            <button onclick="showGallery()">查看图鉴</button>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1>飞机大战</h1>
+            <div class="button-group">
+                <button onclick="showLevelSelect()">选择关卡</button>
+                <button onclick="showHistory()">查看历史记录</button>
+                <button onclick="showGallery()">查看图鉴</button>
+            </div>
+        </div>
+        <div class="level-select-screen" id="levelSelectScreen">
+            <h1>选择关卡</h1>
+            <div class="levels" id="levels"></div>
+            <div class="button-group">
+                <button onclick="hideLevelSelect()">返回主菜单</button>
+            </div>
+        </div>
+        <div class="plane-select-screen" id="planeSelectScreen">
+            <h1>选择你的飞机</h1>
+            <div class="plane-selection">
+                <div class="planes" id="planes"></div>
+            </div>
+            <div class="button-group">
+                <button onclick="hidePlaneSelect()">返回关卡选择</button>
+                <button onclick="startGame()">开始游戏</button>
+            </div>
+        </div>
+        <div class="gallery-screen" id="galleryScreen">
+            <h1>敌机图鉴</h1>
+            <div class="gallery-controls">
+                <button onclick="hideGallery()">返回</button>
+            </div>
+            <div class="gallery-list" id="galleryList"></div>
+        </div>
+        <div class="history-screen" id="historyScreen">
+            <h1>历史记录</h1>
+            <div class="history-controls">
+                <button onclick="hideHistory()">返回</button>
+                <button onclick="clearHistory()">清空记录</button>
+            </div>
+            <div class="history-table">
+                <div class="history-header">
+                    <div class="history-col rank">排名</div>
+                    <div class="history-col score">分数</div>
+                    <div class="history-col time">耗时</div>
+                    <div class="history-col plane">战机类型</div>
+                    <div class="history-col enemies">击败敌人</div>
+                    <div class="history-col date">日期</div>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
